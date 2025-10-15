@@ -1,0 +1,14 @@
+services:
+  - type: worker
+    name: xiaozhi-mcp-worker
+    env: python
+    autoDeploy: true
+    buildCommand: pip install -r requirements.txt
+    startCommand: python mcp_pipe.py server.py
+    envVars:
+      - key: MCP_ENDPOINT      # Điền giá trị trên Dashboard (đừng commit thẳng)
+        sync: false
+      - key: LOG_LEVEL
+        value: INFO
+      - key: PYTHONUNBUFFERED
+        value: "1"
